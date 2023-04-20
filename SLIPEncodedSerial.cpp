@@ -1,11 +1,16 @@
 #include "SLIPEncodedSerial.h"
+#include <HardwareSerial.h>
 
 /*
  CONSTRUCTOR
  */
 //instantiate with the transmission layer
 //use HardwareSerial
-SLIPEncodedSerial::SLIPEncodedSerial(HardwareSerial &s){
+//HardwareSerial MySerial(0);
+
+// SLIPEncodedSerial::SLIPEncodedSerial(HardwareSerial &s){   
+SLIPEncodedSerial::SLIPEncodedSerial(HWCDC &s){ 
+
 	serial = &s;
 	rstate = CHAR;
 }

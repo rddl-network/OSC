@@ -12,6 +12,7 @@ Extends the Serial class to encode SLIP over serial
 #include <api/HardwareSerial.h>
 #else
 #include <HardwareSerial.h>
+#include <HWCDC.h>
 #endif
 
 
@@ -21,15 +22,17 @@ private:
 	enum erstate {CHAR, FIRSTEOT, SECONDEOT, SLIPESC } rstate;
 	
 	//the serial port used
-	HardwareSerial * serial;
+	// HardwareSerial * serial;  // for AI Thinker ESP-C3-32S
+	HWCDC *serial;  // for XIAO ESP32-C3
 
 	
 public:
 	
 	//the serial port used
-	SLIPEncodedSerial(HardwareSerial & );
+	// SLIPEncodedSerial(HardwareSerial & );  // for AI Thinker ESP-C3-32S
+	SLIPEncodedSerial(HWCDC &); // for XIAO ESP32-C3
 
-	
+
 	int available();
 	int read();
 	int peek();
